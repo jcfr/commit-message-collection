@@ -18,6 +18,8 @@ Table of Contents
    * [The open-source citizen commit message collection](#the-open-source-citizen-commit-message-collection)
    * [Python](#python)
       * [flake8](#flake8)
+      * [Use "is None" instead of "== None"](#use-is-none-instead-of--none)
+
 
 <!--
 *Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)*
@@ -73,3 +75,21 @@ Internally flake8 is wrapper around these tools:
 To learn more about flake8. See http://flake8.pycqa.org/en/latest/
 ```
 
+## Use "is None" instead of "== None"
+
+```
+STYLE: Update python scripts to use "is None" instead of "== None"
+
+Rational copied from https://www.python.org/dev/peps/pep-0290/#testing-for-none
+
+// -----------------
+Since there is only one None object, equality can be tested with identity. Identity
+tests are slightly faster than equality tests. Also, some object types may overload
+comparison, so equality testing may be much slower.
+
+Pattern:
+
+if v == None  -->  if v is None:
+if v != None  -->  if v is not None:
+// -----------------
+```
